@@ -22,7 +22,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Egolive\\Aperturly\\AperturlyServiceProvider"
+        "Egolive\\Aperturly\\Providers\\AperturlyServiceProvider"
       ]
     }
   }
