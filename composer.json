@@ -16,13 +16,13 @@
   },
   "autoload": {
     "psr-4": {
-      "egolive\\Aperturly\\": "src/"
+      "Egolive\\Aperturly\\": "src/"
     }
   },
   "extra": {
     "laravel": {
       "providers": [
-        "egolive\\Aperturly\\AperturlyServiceProvider"
+        "Egolive\\Aperturly\\AperturlyServiceProvider"
       ]
     }
   }
