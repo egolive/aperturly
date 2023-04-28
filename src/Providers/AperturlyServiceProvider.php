@@ -2,6 +2,7 @@
 
 namespace Egolive\Aperturly\Providers;
 
+use Egolive\Aperturly\Commands\BreezeInstallCommand;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Breeze\BreezeServiceProvider;
 
