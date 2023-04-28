@@ -14,6 +14,15 @@ class AperturlyInstallCommand extends Command
   public function handle()
   {
     $this->call('breeze:install', ['stack' => 'blade']);
+
+    Artisan::call('migrate');
+    
+    $this->info('Installing npm dependencies...');
+    exec('npm install');
+
+    $this->info('Compiling assets...');
+    exec('npm run dev');
+
     $this->info('Aperturly installed successfully.');
   }
 }
