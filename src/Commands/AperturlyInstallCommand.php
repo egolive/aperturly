@@ -13,7 +13,7 @@ class AperturlyInstallCommand extends Command
 
   public function handle()
   {
-    $this->call('breeze:install', ['--stack' => 'blade']);
+    $this->call('breeze:install', ['stack' => 'blade']);
     $this->info('Aperturly installed successfully.');
   }
 }
