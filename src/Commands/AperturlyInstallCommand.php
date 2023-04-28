@@ -4,7 +4,6 @@ namespace Egolive\Aperturly\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
-use Laravel\Breeze\Console\InstallCommand as BreezeInstallCommand;
 
 class AperturlyInstallCommand extends Command
 {
@@ -14,7 +13,7 @@ class AperturlyInstallCommand extends Command
 
   public function handle()
   {
-    $this->call(BreezeInstallCommand::class);
+    $this->call('breeze:install', ['--stack' => 'blade']);
     $this->info('Aperturly installed successfully.');
   }
 }
