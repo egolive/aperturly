@@ -2,7 +2,7 @@
 
 namespace Egolive\Aperturly\Providers;
 
-use Egolive\Aperturly\Commands\BreezeInstallCommand;
+use Egolive\Aperturly\Commands\AperturlyInstallCommand;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Breeze\BreezeServiceProvider;
 
@@ -23,7 +23,7 @@ class AperturlyServiceProvider extends ServiceProvider
     {
       if ($this->app->runningInConsole()) {
         $this->commands([
-          BreezeInstallCommand::class,
+          AperturlyInstallCommand::class,
         ]);
       }
     }
