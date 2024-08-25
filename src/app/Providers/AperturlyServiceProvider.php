@@ -1,8 +1,8 @@
 <?php
 
-namespace Egolive\Aperturly\Providers;
+namespace Egolive\Aperturly\App\Providers;
 
-use Egolive\Aperturly\Commands\AperturlyInstallCommand;
+use Egolive\Aperturly\App\Console\Commands\AperturlyInstallCommand;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Breeze\BreezeServiceProvider;
 
@@ -21,7 +21,10 @@ class AperturlyServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-      if ($this->app->runningInConsole()) {
+        // Loading the migrations from the package
+        $this->loadMigrationsFrom(__DIR__.'/../../Database/Migrations');
+
+        if ($this->app->runningInConsole()) {
         $this->commands([
           AperturlyInstallCommand::class,
         ]);
