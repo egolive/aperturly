@@ -1,6 +1,6 @@
 <?php
 
-namespace Egolive\Aperturly\App\Console\Commands;
+namespace Egolive\Aperturly\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
