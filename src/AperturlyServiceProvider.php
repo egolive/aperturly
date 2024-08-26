@@ -17,7 +17,6 @@ class AperturlyServiceProvider extends PackageServiceProvider {
             $command->info('Hello, and welcome to my great new package!');
           });
       });
-
   }
 
 }
