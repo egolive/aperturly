@@ -23,7 +23,6 @@ class AperturlyServiceProvider extends PackageServiceProvider {
           ->startWith(function (Command $command) {
             $command->info('Starting Aperturly installation...');
           })
-          ->askToProceed()
           ->publishMigrations()
           ->runMigrations()
           ->publishAssets()
