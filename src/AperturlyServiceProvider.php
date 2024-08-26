@@ -25,7 +25,7 @@ class AperturlyServiceProvider extends PackageServiceProvider {
                     $command->info('Starting Aperturly installation...');
 
                     $routesPath = base_path('routes/web.php');
-                    $stubPath = __DIR__ . '/stubs/';
+                  $stubPath = __DIR__ . '/../stubs/';
 
                     if ($command->confirm('Would you like to install Spatie Laravel-Permission for role management?', TRUE)) {
                         file_put_contents($routesPath, file_get_contents($stubPath . 'web_with_permission.stub'), FILE_APPEND);
