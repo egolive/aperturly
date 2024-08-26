@@ -18,7 +18,7 @@ class AperturlyServiceProvider extends PackageServiceProvider {
         'create_series_table',
         'create_images_table',
       ])
-      ->hasInstallCommand(function (Command $command) {
+      ->hasInstallCommand(function(InstallCommand $command) {
         $command->info('Starting Aperturly installation...');
 
         if (!$command->confirm('Do you want to proceed with the installation?', true)) {
