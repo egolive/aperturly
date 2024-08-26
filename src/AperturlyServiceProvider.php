@@ -11,7 +11,6 @@ class AperturlyServiceProvider extends PackageServiceProvider {
   public function configurePackage(Package $package): void {
     $package
       ->name('aperturly')
-      ->hasConfigFile() // Falls es eine Config-Datei gibt
       ->hasMigrations([
         'create_portfolios_table',
         'create_galleries_table',
@@ -35,17 +34,14 @@ class AperturlyServiceProvider extends PackageServiceProvider {
         $stubPath = __DIR__ . '/stubs/';
 
         if ($command->confirm('Would you like to install Spatie Laravel-Permission for role management?', true)) {
-          // Kopiere die Datei mit Spatie-Integration
           file_put_contents($routesPath, file_get_contents($stubPath . 'web_with_permission.stub'), FILE_APPEND);
           $command->call('aperturly:install-permission');
         } else {
-          // Kopiere die Datei ohne Spatie-Integration
           file_put_contents($routesPath, file_get_contents($stubPath . 'web_without_permission.stub'), FILE_APPEND);
         }
 
         $command->info('Routes have been set up successfully.');
 
-        // Breeze installieren und Assets kompilieren
         if ($command->confirm('Would you like to install Breeze and compile assets?', true)) {
           $command->info('Installing Breeze...');
           $command->call('breeze:install', ['stack' => 'blade']);

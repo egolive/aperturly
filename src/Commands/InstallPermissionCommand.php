@@ -14,7 +14,12 @@ class InstallPermissionCommand extends Command
   public function handle()
   {
     $this->info('Installing spatie/laravel-permission...');
-    exec('composer require spatie/laravel-permission');
+    exec('composer require spatie/laravel-permission', $output, $returnVar);
+
+    if ($returnVar !== 0) {
+      $this->error('Installation of spatie/laravel-permission failed. Please install it manually.');
+      return;
+    }
 
     $this->call('vendor:publish', ['--provider' => "Spatie\Permission\PermissionServiceProvider"]);
 
