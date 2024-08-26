@@ -4,8 +4,7 @@ namespace Egolive\Aperturly\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
-use Symfony\Component\Process\Process;
-
+use Illuminate\Support\Facades\Log;
 
 class InstallPermissionCommand extends Command
 {
@@ -16,16 +15,14 @@ class InstallPermissionCommand extends Command
   public function handle()
   {
     $this->info('Installing spatie/laravel-permission...');
-    $process = new Process(['composer', 'require', 'spatie/laravel-permission']);
-    $process->setTimeout(3600); // Setze Timeout, falls der Prozess lange dauert
-    $process->run();
 
-    if (!$process->isSuccessful()) {
-      $this->error('Installation of spatie/laravel-permission failed: ' . $process->getErrorOutput());
-      return;
+    Log::info('Before running composer require');
+    exec('composer require spatie/laravel-permission', $output, $returnVar);
+    Log::info('After running composer require');
+
+    if ($returnVar !== 0) {
+      Log::error('Composer require failed');
     }
-
-    $this->info($process->getOutput());
 
     $this->call('vendor:publish', ['--provider' => "Spatie\Permission\PermissionServiceProvider"]);
 
