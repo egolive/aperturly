@@ -17,14 +17,17 @@ class AperturlyServiceProvider extends PackageServiceProvider {
         'create_galleries_table',
         'create_series_table',
         'create_images_table',
-      ]) // Falls es Migrationen gibt
+      ])
       ->hasInstallCommand(function (Command $command) {
         $command
           ->startWith(function (Command $command) {
             $command->info('Starting Aperturly installation...');
+            if (!$command->confirm('Do you want to proceed with the installation?', true)) {
+              $command->warn('Installation aborted.');
+            }
           })
           ->publishMigrations()
-          ->runMigrations()
+          ->askToRunMigrations()
           ->publishAssets()
           ->addInstallStep('Setting up routes', function (Command $command) {
             $routesPath = base_path('routes/web.php');
