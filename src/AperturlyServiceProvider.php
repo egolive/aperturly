@@ -2,6 +2,8 @@
 
 namespace Egolive\Aperturly;
 
+namespace Egolive\Aperturly;
+
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
@@ -18,17 +20,12 @@ class AperturlyServiceProvider extends PackageServiceProvider {
         'create_images_table',
       ])
       ->hasInstallCommand(function(InstallCommand $command) {
-        // Start message
+
         $command->startWith(function(InstallCommand $command) {
           $command->info('Starting Aperturly installation...');
         });
 
-        // Publish migrations and assets
-        $command->publishMigrations()
-          ->askToRunMigrations()
-          ->publishAssets();
-
-        // Setup routes
+        // Fragen Sie nach der Installation von Spatie Laravel-Permission
         $command->startWith(function(InstallCommand $command) {
           $routesPath = base_path('routes/web.php');
           $stubPath = __DIR__ . '/stubs/';
@@ -43,7 +40,7 @@ class AperturlyServiceProvider extends PackageServiceProvider {
           $command->info('Routes have been set up successfully.');
         });
 
-        // Breeze installation and assets compilation
+        // Breeze installieren und Assets kompilieren
         $command->startWith(function(InstallCommand $command) {
           if ($command->confirm('Would you like to install Breeze and compile assets?', true)) {
             $command->info('Installing Breeze...');
@@ -57,7 +54,11 @@ class AperturlyServiceProvider extends PackageServiceProvider {
           }
         });
 
-        // End message
+        // Migrations und Assets veröffentlichen
+        $command->publishMigrations()
+          ->askToRunMigrations()
+          ->publishAssets();
+
         $command->endWith(function(InstallCommand $command) {
           $command->info('Aperturly installation complete.');
         });
