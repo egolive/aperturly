@@ -4,7 +4,6 @@ namespace Egolive\Aperturly\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
-use Illuminate\Support\Facades\Log;
 
 class InstallPermissionCommand extends Command
 {
@@ -15,14 +14,7 @@ class InstallPermissionCommand extends Command
   public function handle()
   {
     $this->info('Installing spatie/laravel-permission...');
-
-    Log::info('Before running composer require');
-    exec('composer require spatie/laravel-permission', $output, $returnVar);
-    Log::info('After running composer require');
-
-    if ($returnVar !== 0) {
-      Log::error('Composer require failed');
-    }
+    exec('composer require spatie/laravel-permission');
 
     $this->call('vendor:publish', ['--provider' => "Spatie\Permission\PermissionServiceProvider"]);
 
