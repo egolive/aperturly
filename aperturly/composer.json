@@ -1,0 +1,31 @@
+{
+  "name": "egolive/aperturly",
+  "description": "A sleek, user-friendly photography CMS designed to effortlessly manage, upload, and display images for photographers and creative professionals.",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Daniel Ehrenhofer",
+      "email": "info@danielehrenhofer.de"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "php": "^8.2.0",
+    "laravel/framework": "^11.0",
+    "laravel/breeze": "^2.0",
+    "spatie/laravel-package-tools": "^1"
+  },
+  "autoload": {
+    "psr-4": {
+      "Egolive\\Aperturly\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Egolive\\Aperturly\\AperturlyServiceProvider"
+      ]
+    }
+  }
+}
